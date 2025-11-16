@@ -1,0 +1,11 @@
+.env
+.env.local
+node_modules
+.next
+out
+*.log
+.DS_Store
+public/uploads/*
+!public/uploads/.gitkeep
+
+/generated/prisma
