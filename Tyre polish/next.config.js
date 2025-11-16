@@ -1,14 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
-    domains: ['images.unsplash.com', 'res.cloudinary.com'],
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
+  output: "standalone",
+  experimental: {
+    isrMemoryCacheSize: 0,
   },
-}
+  reactStrictMode: false,
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
