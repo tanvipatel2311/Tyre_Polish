@@ -1,12 +1,12 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '../components/Navbar';
 import { LogIn, Mail, Lock } from 'lucide-react';
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [formData, setFormData] = useState({
@@ -71,9 +71,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <div className="flex items-center justify-center px-4 py-24 sm:px-6 lg:px-8">
+    <div className="flex items-center justify-center px-4 py-24 sm:px-6 lg:px-8">
         <div className="w-full max-w-md space-y-8">
           <div>
             <div className="flex justify-center">
@@ -159,6 +157,16 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Navbar />
+      <Suspense fallback={<div className="flex items-center justify-center min-h-screen">Loading...</div>}>
+        <LoginForm />
+      </Suspense>
     </div>
   );
 }
