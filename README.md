@@ -1,2 +1,0 @@
-# Tyre_Polish
-
